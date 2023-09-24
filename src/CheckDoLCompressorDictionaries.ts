@@ -36,12 +36,22 @@ export class CheckDoLCompressorDictionaries implements LifeTimeCircleHook {
             if (scriptFileItem.name === 'dictionaries.js') {
                 const h = await computeSHA256(scriptFileItem.content);
                 console.log('[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is:', h);
+                this.log.log(`[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is:${h}`);
                 if (this.hash !== h) {
                     console.error('[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is not match, maybe DoLCompressorDictionaries changed.');
+                    console.error('[CheckDoLCompressorDictionaries]  ====== the hash expected is:', this.hash, 'but the real hash is:', h);
+                    this.log.error('[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is not match, maybe DoLCompressorDictionaries changed.');
+                    this.log.error(`[CheckDoLCompressorDictionaries]  ====== the hash expected is:${this.hash} but the real hash is:${h}`);
+                } else {
+                    console.log('[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is match, check ok.');
+                    this.log.log('[CheckDoLCompressorDictionaries]  ====== the hash of [dictionaries.js] is match, check ok.');
                 }
-                break;
+                return;
             }
         }
+        console.error('[CheckDoLCompressorDictionaries]  ====== not found [dictionaries.js], maybe DoLCompressorDictionaries not loaded.');
+        this.log.error('[CheckDoLCompressorDictionaries]  ====== not found [dictionaries.js], maybe DoLCompressorDictionaries not loaded.');
+        return;
     }
 
 }
