@@ -1,6 +1,6 @@
 {
   "name": "CheckDoLCompressorDictionaries",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "styleFileList": [
   ],
   "scriptFileList_earlyload": [
@@ -20,5 +20,11 @@
   ],
   "additionFile": [
     "README.md"
+  ],
+  "dependenceInfo": [
+    {
+      "modName": "ModLoader",
+      "version": ">=1.1.0"
+    }
   ]
 }

@@ -20,7 +20,7 @@ export class CheckDoLCompressorDictionaries implements LifeTimeCircleHook {
         public gModUtils: ModUtils,
     ) {
         this.log = this.gModUtils.getLogger();
-        this.gModUtils.getModLoadController().addLifeTimeCircleHook(this);
+        this.gModUtils.getModLoadController().addLifeTimeCircleHook('CheckDoLCompressorDictionaries', this);
     }
 
     async ModLoaderLoadEnd() {
