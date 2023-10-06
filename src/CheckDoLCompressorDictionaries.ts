@@ -22,7 +22,7 @@ export class CheckDoLCompressorDictionaries implements LifeTimeCircleHook {
     async doCheck() {
         const scdOrigin = this.gSC2DataManager.getSC2DataInfoCache();
         const scd = this.gSC2DataManager.getSC2DataInfoAfterPatch();
-        const od = scdOrigin.scriptFileItems.map.get('dictionaries.js');
+        const od = scdOrigin?.scriptFileItems.map.get('dictionaries.js');
         const nd = scd.scriptFileItems.map.get('dictionaries.js');
         if (!od || !nd) {
             console.error('[CheckDoLCompressorDictionaries]  ====== not found [dictionaries.js], maybe DoLCompressorDictionaries not loaded.');
